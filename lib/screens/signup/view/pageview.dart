@@ -1,12 +1,8 @@
-import 'package:auto_services/screens/signup/view/forgetpassword.dart';
-import 'package:auto_services/screens/signup/view/resetpassword.dart';
-import 'package:auto_services/screens/signup/view/verification.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import '../../../widgets/widgets_imports.dart';
 
 class Pages extends StatelessWidget {
   Pages({super.key});
-  final controller = PageController(initialPage: 1);
+  final controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +10,9 @@ class Pages extends StatelessWidget {
         child: PageView(
           controller: controller,
           children: [
-            ForgetPassword(),
+            const ForgetPassword(),
             VerificationScreen(),
-            Resetpassword(),
+            const Resetpassword(),
           ],
         ),
       ),

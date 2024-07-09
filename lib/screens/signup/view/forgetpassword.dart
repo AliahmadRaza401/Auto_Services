@@ -1,6 +1,5 @@
 import 'package:auto_services/widgets/custom_app_bar.dart';
 import 'package:auto_services/widgets/widgets_imports.dart';
-import 'package:flutter/cupertino.dart';
 
 final TextEditingController emailController = TextEditingController();
 
@@ -18,7 +17,7 @@ class ForgetPassword extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: CustomAppBar(title: "", actions: []),
+        appBar: const CustomAppBar(title: "", actions: []),
         body: Center(
           child: SizedBox(
             height: context.height,
@@ -48,8 +47,8 @@ class ForgetPassword extends StatelessWidget {
                   label: "Email I'D/ Mobile Number",
                   hintText: "",
                   keyboardType: TextInputType.emailAddress,
-                  suffixIcon: Icon(null),
-                  prefixIcon: Icon(null),
+                  suffixIcon: const Icon(null),
+                  prefixIcon: const Icon(null),
                   hasPrefix: false,
                   hasSuffix: false,
                 ),
