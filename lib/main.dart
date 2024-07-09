@@ -1,6 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get_storage/get_storage.dart';
+import 'data/repository/authentication_repository.dart';
+import 'firebase_options.dart';
 import 'widgets/widgets_imports.dart';
 
-void main() {
+void main() async {
+  /// ----- Widgets Binding -----
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  /// ----- Initialize Get Local Storage -----
+  await GetStorage.init();
+
+  /// ----- Initialize Firebase -----
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then(
+    (FirebaseApp app) => Get.put(AuthenticationRepository()),
+  );
+
+  /// ----- Initialization and Handling Firebase Messaging -----
+  // await FirebaseMessagingService.init();
+
   runApp(const MyApp());
 }
 
