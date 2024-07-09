@@ -1,3 +1,5 @@
+import 'package:auto_services/screens/technical_test.dart';
+
 import '../screens/car_repair/view/car_repair_bottomnavbar.dart';
 import '../screens/consumer_services/view/consumer_profile_edit.dart';
 import '../widgets/widgets_imports.dart';
@@ -23,8 +25,10 @@ dynamic routes = [
   GetPage(name: '/serviceapproval', page: () => const ServiceApproval()),
   GetPage(name: '/consumerservice', page: () => const ConsumerService()),
   GetPage(name: '/consumerprofile', page: () => const ConsumerProfile()),
-  GetPage(name: '/consumerprofileedit', page: () => ConsumerProfileEdit()),
+  GetPage(
+      name: '/consumerprofileedit', page: () => const ConsumerProfileEdit()),
   GetPage(name: '/seebooking', page: () => const SeeBooking()),
+  GetPage(name: '/technicaltest', page: () => const TechnicalTest()),
   GetPage(name: '/cartowbottomnav', page: () => CarTowBottomNavBar()),
   GetPage(name: '/carrepairbottomnav', page: () => CarRepairBottomNavBar()),
 ];

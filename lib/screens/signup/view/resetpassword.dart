@@ -10,7 +10,7 @@ class Resetpassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "", actions: []),
+      appBar: const CustomAppBar(title: "", actions: []),
       body: Center(
         child: SizedBox(
           height: context.height,
@@ -42,8 +42,8 @@ class Resetpassword extends StatelessWidget {
                 label: "Password",
                 hintText: "",
                 keyboardType: TextInputType.emailAddress,
-                suffixIcon: Icon(null),
-                prefixIcon: Icon(null),
+                suffixIcon: const Icon(null),
+                prefixIcon: const Icon(null),
                 hasPrefix: false,
                 hasSuffix: true,
               ),
@@ -56,10 +56,10 @@ class Resetpassword extends StatelessWidget {
                 label: "Confirm Password",
                 hintText: "",
                 keyboardType: TextInputType.emailAddress,
-                prefixIcon: Icon(null),
+                prefixIcon: const Icon(null),
                 hasPrefix: false,
                 hasSuffix: true,
-                suffixIcon: Icon(null),
+                suffixIcon: const Icon(null),
               ),
               heightBox(.04),
               PrimaryButton(
