@@ -1,3 +1,4 @@
+import 'package:auto_services/bindings/general_binding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_storage/get_storage.dart';
 import 'data/repository/authentication_repository.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: '',
       debugShowCheckedModeBanner: false,
+      initialBinding: GeneralBindings(),
       initialRoute: '/',
       getPages: routes,
       theme: ThemeData(

@@ -6,22 +6,19 @@ class TechnicalTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: KColors.kPrimary,
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(Icons.arrow_back_rounded, color: KColors.kWhite),
+        ),
+      ),
       backgroundColor: KColors.kPrimary,
-      body: SizedBox(
-        height: context.height,
-        width: context.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomText(
-                maxLines: 2,
-                text: "Coming\nSoon",
-                textStyle: KTextStyles().normal(
-                    textColor: KColors.kWhite,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600))
-          ],
+      body: Center(
+        child: CustomText(
+          maxLines: 2,
+          text: "Coming\nSoon",
+          textStyle: KTextStyles().normal(textColor: KColors.kWhite, fontSize: 40, fontWeight: FontWeight.w600),
         ),
       ),
     );

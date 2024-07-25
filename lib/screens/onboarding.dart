@@ -1,8 +1,10 @@
 import 'package:auto_services/widgets/widgets_imports.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 
-class OnBoarding extends StatelessWidget {
-  const OnBoarding({super.key});
+import 'auth/view/login.dart';
+
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class OnBoarding extends StatelessWidget {
         Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => LoginScreen(),
           ),
         );
       },

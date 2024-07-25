@@ -20,10 +20,7 @@ class CarRepairHome extends StatelessWidget {
                 alignText: TextAlign.left,
                 maxLines: 3,
                 text: "Total Car Care &\nAuto Repair\nServices",
-                textStyle: KTextStyles().subHeading(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w700,
-                    textColor: KColors.kPrimary),
+                textStyle: KTextStyles().subHeading(fontSize: 36, fontWeight: FontWeight.w700, textColor: KColors.kPrimary),
               ),
               heightBox(0.04),
               PrimaryButton(
