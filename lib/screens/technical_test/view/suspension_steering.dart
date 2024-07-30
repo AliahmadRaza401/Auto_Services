@@ -1,25 +1,58 @@
-import 'package:auto_services/common_models/user.dart';
+import 'package:auto_services/widgets/custom_app_bar.dart';
+import 'package:auto_services/widgets/widgets_imports.dart';
 
-import '../widgets/widgets_imports.dart';
+class SuspensionSteering extends StatelessWidget {
+  const SuspensionSteering({super.key});
 
-/// App Constants
-
-String appVersion = "0.0.0";
-
-/// GetX Constants
-
-var obscureText = true.obs;
-var obscureTextCP = true.obs;
-var defaultObscureText = false.obs;
-final selectedService = Rxn<String>();
-final userData = Rxn<UserModel>();
-
-/// API Constants
-
-const Map<String, String> headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-};
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CustomAppBar(title: "Technical Test", actions: []),
+      body: Center(
+        child: SizedBox(
+          height: context.height,
+          width: kWidth(.9),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              heightBox(.02),
+              CustomText(
+                  text: "Suspension and Steering",
+                  textStyle: KTextStyles().normal(
+                      fontSize: 16,
+                      textColor: KColors.kPrimary,
+                      fontWeight: FontWeight.bold)),
+              heightBox(.04),
+              const TechnicalTestTileDrop(
+                  title: "Shock Absorbers Leaks Check", lable: "Yes"),
+              const TechnicalTestTileDrop(
+                  title: "Steering Components Check", lable: "Yes"),
+              const TechnicalTestTileDrop(
+                  title: "Wheel Alignment Check", lable: "Yes"),
+              const Spacer(),
+              Center(
+                child: CustomText(
+                    text: "Step 05 of 05",
+                    textStyle: KTextStyles().normal(
+                      fontSize: 16,
+                      textColor: KColors.kPrimary,
+                    )),
+              ),
+              heightBox(.01),
+              PrimaryButton(
+                height: .07,
+                width: .9,
+                text: "Finalize",
+                function: () {},
+              ),
+              heightBox(.02),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class TechnicalTestTileDrop extends StatelessWidget {
   final String title, lable;
@@ -91,55 +124,6 @@ class TechnicalTestTile extends StatelessWidget {
           suffixIcon: const Icon(null),
           prefixIcon: const Icon(null),
         ),
-        heightBox(.02),
-      ],
-    );
-  }
-}
-
-class TestReportTile extends StatelessWidget {
-  final String title, lable;
-
-  const TestReportTile({
-    super.key,
-    required this.title,
-    required this.lable,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: title, textStyle: KTextStyles().normal()),
-        heightBox(.005),
-        Align(
-          alignment: Alignment.centerRight,
-          child: SizedBox(
-            width: kWidth(.85),
-            child: CustomText(
-                alignText: TextAlign.left,
-                text: lable,
-                textStyle: KTextStyles().normal(
-                  textColor: KColors.kTcolor,
-                )),
-          ),
-        ),
-        // AbsorbPointer(
-        //   absorbing: true,
-        //   child: CustomTextField2(
-        //     suffixIconColor: KColors.kBlack,
-        //     themeColor: KColors.kBlack,
-        //     hasPrefix: false,
-        //     hasSuffix: false,
-        //     controller: TextEditingController(),
-        //     label: lable,
-        //     hintText: "",
-        //     keyboardType: TextInputType.text,
-        //     suffixIcon: Icon(null),
-        //     prefixIcon: Icon(null),
-        //   ),
-        // ),
         heightBox(.02),
       ],
     );

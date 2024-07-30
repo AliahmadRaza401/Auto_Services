@@ -26,10 +26,22 @@ class LoginScreen extends StatelessWidget {
             children: [
               CustomText(
                 text: "Log In",
-                textStyle: KTextStyles().heading(fontSize: 32, fontWeight: FontWeight.w600, textColor: KColors.kPrimary),
+                textStyle: KTextStyles().heading(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                    textColor: KColors.kPrimary),
               ),
-              CustomText(text: "Welcome back", textStyle: KTextStyles().heading(fontSize: 34, fontWeight: FontWeight.w500, textColor: KColors.kTertiary)),
-              CustomText(text: "Sign in to access your account", textStyle: KTextStyles().normal(fontWeight: FontWeight.w500, textColor: KColors.kTertiary)),
+              CustomText(
+                  text: "Welcome back",
+                  textStyle: KTextStyles().heading(
+                      fontSize: 34,
+                      fontWeight: FontWeight.w500,
+                      textColor: KColors.kTertiary)),
+              CustomText(
+                  text: "Sign in to access your account",
+                  textStyle: KTextStyles().normal(
+                      fontWeight: FontWeight.w500,
+                      textColor: KColors.kTertiary)),
               heightBox(.02),
               SizedBox(
                 width: kWidth(.9),
@@ -69,11 +81,15 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             Get.toNamed("/pages");
                           },
-                          child: CustomText(text: "Forget password ?", textStyle: KTextStyles().small(fontSize: 12, textColor: KColors.kTcolor)),
+                          child: CustomText(
+                              text: "Forget password ?",
+                              textStyle: KTextStyles().small(
+                                  fontSize: 12, textColor: KColors.kTcolor)),
                         ),
                       ),
                       heightBox(.02),
-                      Divider(thickness: 1, color: KColors.kTcolor.withOpacity(.2)),
+                      Divider(
+                          thickness: 1, color: KColors.kTcolor.withOpacity(.2)),
                       heightBox(0.02),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

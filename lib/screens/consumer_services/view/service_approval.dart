@@ -12,6 +12,7 @@ class ServiceApproval extends StatelessWidget {
           height: context.height,
           width: context.width,
           child: ListView.separated(
+              shrinkWrap: true,
               itemBuilder: (context, index) {
                 return const CarMechanicTile2();
               },
