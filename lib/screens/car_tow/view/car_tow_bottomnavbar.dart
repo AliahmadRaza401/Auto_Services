@@ -1,5 +1,6 @@
 import 'package:auto_services/screens/car_tow/controller/car_tow_controller.dart';
 import 'package:auto_services/screens/car_tow/view/car_tow_history.dart';
+import 'package:auto_services/screens/car_tow/view/car_tow_notification.dart';
 import '../../../widgets/widgets_imports.dart';
 import '../../account/view/user_profile.dart';
 
@@ -49,9 +50,9 @@ class CarTowBottomNavBar extends StatelessWidget {
         return switch (carTowController.selectedPageIndex.value) {
           0 => const CarSelectionScreen(),
           1 => const CarTowHistoryScreen(),
-          2 => const CarTowHistoryScreen(),
+          2 => const CarTowNotificationScreen(),
           3 => const UserProfile(),
-          _ => const CarSelectionScreen(),
+          _ => const CarTowHistoryScreen(),
         };
       }),
     );

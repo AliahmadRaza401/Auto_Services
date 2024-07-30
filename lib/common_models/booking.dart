@@ -7,7 +7,9 @@ class BookingModel {
     required this.subService,
     required this.subServiceDetail,
     required this.source,
+    required this.sourceLatLng,
     required this.destination,
+    required this.destinationLatLng,
     required this.preferredDate,
     required this.brand,
     required this.carId,
@@ -27,7 +29,9 @@ class BookingModel {
   final String subService;
   final Map<String, dynamic>? subServiceDetail;
   final String source;
+  final GeoPoint? sourceLatLng;
   final String destination;
+  final GeoPoint? destinationLatLng;
   final String preferredDate;
   final String brand;
   final String paymentStatus;
@@ -46,12 +50,14 @@ class BookingModel {
         id: '',
         brand: '',
         carId: '',
-        destination: '',
         preferredDate: '',
         mainService: '',
         subService: '',
         subServiceDetail: null,
         source: '',
+        sourceLatLng: null,
+        destination: '',
+        destinationLatLng: null,
         paymentStatus: '',
         customerId: '',
         customerName: '',
@@ -71,9 +77,11 @@ class BookingModel {
         id: document.id,
         mainService: data['MainService'] ?? '',
         subService: data['SubService'] ?? '',
-        subServiceDetail: data['SubServiceDetail'] ?? '',
+        subServiceDetail: data['SubServiceDetail'] ?? {},
         source: data['Source'] ?? '',
+        sourceLatLng: data['SourceLatLng'],
         destination: data['Destination'] ?? '',
+        destinationLatLng: data['DestinationLatLng'],
         brand: data['Brand'] ?? '',
         carId: data['CarId'] ?? '',
         preferredDate: data['PreferredDate'] ?? '',
@@ -98,7 +106,9 @@ class BookingModel {
         'SubService': subService,
         'SubServiceDetail': subServiceDetail,
         'Source': source,
+        'SourceLatLng': sourceLatLng,
         'Destination': destination,
+        'DestinationLatLng': destinationLatLng,
         'Brand': brand,
         'CarId': carId,
         'PreferredDate': preferredDate,

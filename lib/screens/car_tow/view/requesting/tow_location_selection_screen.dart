@@ -8,8 +8,6 @@ import '../../../../widgets/widgets_imports.dart';
 class TowLocationSelectionScreen extends StatelessWidget {
   const TowLocationSelectionScreen({super.key});
 
-  static const CameraPosition _initialPosition = CameraPosition(target: LatLng(37.77483, -122.41942), zoom: 12.0);
-
   @override
   Widget build(BuildContext context) {
     final carTowController = CarTowController.instance;
@@ -21,10 +19,22 @@ class TowLocationSelectionScreen extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             Positioned.fill(
-              child: GoogleMap(
-                initialCameraPosition: _initialPosition,
-                onMapCreated: (GoogleMapController controller) {},
-              ),
+              child: Obx(() {
+                return GoogleMap(
+                  initialCameraPosition: const CameraPosition(target: LatLng(31.582045, 74.329376), zoom: 16),
+                  zoomControlsEnabled: false,
+                  trafficEnabled: false,
+                  myLocationEnabled: true,
+                  buildingsEnabled: false,
+                  compassEnabled: true,
+                  indoorViewEnabled: false,
+                  liteModeEnabled: false,
+                  myLocationButtonEnabled: true,
+                  style: carTowController.mapStyleString.value,
+                  markers: carTowController.marker.toSet(),
+                  onMapCreated: (controller) => carTowController.mapController.value = controller,
+                );
+              }),
             ),
             SafeArea(
               child: Column(
@@ -53,21 +63,13 @@ class TowLocationSelectionScreen extends StatelessWidget {
                                       const SizedBox(width: 45, height: 45, child: Icon(Icons.circle, color: KColors.kBlack)),
                                       Expanded(
                                         child: GestureDetector(
-                                          onTap: () => carTowController.selectLocationDialog(controller: carTowController.source),
-                                          child: AbsorbPointer(
-                                            absorbing: true,
-                                            child: TextField(
-                                              controller: carTowController.source,
-                                              style: const TextStyle(color: KColors.kBlack, fontSize: 14),
-                                              cursorWidth: 1,
-                                              cursorHeight: 16,
-                                              cursorColor: KColors.kBlack,
-                                              decoration: const InputDecoration(
-                                                labelText: "Pick Up *",
-                                                labelStyle: TextStyle(color: KColors.kBlack, fontSize: 12),
-                                                border: InputBorder.none,
-                                              ),
-                                            ),
+                                          behavior: HitTestBehavior.opaque,
+                                          onTap: () => carTowController.selectLocationDialog(side: 'source'),
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            padding: EdgeInsets.symmetric(horizontal: kWidth(0.02)),
+                                            child: Obx(() => CustomText(
+                                                text: carTowController.source.value?.description ?? 'Pick Up', textStyle: KTextStyles().normal(textColor: KColors.kTertiary), minFontSize: 14)),
                                           ),
                                         ),
                                       ),
@@ -79,21 +81,13 @@ class TowLocationSelectionScreen extends StatelessWidget {
                                       const SizedBox(width: 45, height: 45, child: Icon(Icons.location_on, color: KColors.kBlack)),
                                       Expanded(
                                         child: GestureDetector(
-                                          onTap: () => carTowController.selectLocationDialog(controller: carTowController.destination),
-                                          child: AbsorbPointer(
-                                            absorbing: true,
-                                            child: TextField(
-                                              controller: carTowController.destination,
-                                              cursorColor: KColors.kBlack,
-                                              style: const TextStyle(color: KColors.kBlack, fontSize: 14),
-                                              cursorWidth: 1,
-                                              cursorHeight: 16,
-                                              decoration: const InputDecoration(
-                                                labelText: "Drop Off *",
-                                                labelStyle: TextStyle(color: KColors.kBlack, fontSize: 12),
-                                                border: InputBorder.none,
-                                              ),
-                                            ),
+                                          behavior: HitTestBehavior.opaque,
+                                          onTap: () => carTowController.selectLocationDialog(side: 'destination'),
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            padding: EdgeInsets.symmetric(horizontal: kWidth(0.02)),
+                                            child: Obx(() => CustomText(
+                                                text: carTowController.destination.value?.description ?? 'Drop Off', textStyle: KTextStyles().normal(textColor: KColors.kTertiary), minFontSize: 14)),
                                           ),
                                         ),
                                       ),

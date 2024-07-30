@@ -53,7 +53,7 @@ class RegistrationController extends GetxController {
         name: nameController.text.trim(),
         email: emailController.text.trim(),
         phone: phoneController.text.trim(),
-        type: 'Consumer',
+        type: 'Customer',
         fcmToken: fcmToken ?? '',
         profilePic: '',
       );

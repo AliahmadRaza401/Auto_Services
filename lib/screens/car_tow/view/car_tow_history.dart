@@ -14,24 +14,19 @@ class CarTowHistoryScreen extends StatelessWidget {
       body: SizedBox(
         height: context.height,
         width: context.width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              heightBox(.02),
-              Obx(() {
-                return ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  padding: EdgeInsets.symmetric(horizontal: kWidth(0.05)),
-                  itemBuilder: (context, index) => CarTowBox(booking: carTowController.carTowRequests[index]),
-                  separatorBuilder: (context, index) => heightBox(.02),
-                  itemCount: carTowController.carTowRequests.length,
-                );
-              }),
-              heightBox(.1),
-            ],
-          ),
-        ),
+        child: Obx(() {
+          if (carTowController.carTowRequests.isEmpty) {
+            return Center(child: CustomText(text: 'Currently No Booking', textStyle: KTextStyles().subHeading()));
+          } else {
+            return ListView.separated(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: kWidth(0.05), vertical: kWidth(0.04)),
+              itemBuilder: (context, index) => CarTowBox(booking: carTowController.carTowRequests[index]),
+              separatorBuilder: (context, index) => heightBox(.02),
+              itemCount: carTowController.carTowRequests.length,
+            );
+          }
+        }),
       ),
     );
   }

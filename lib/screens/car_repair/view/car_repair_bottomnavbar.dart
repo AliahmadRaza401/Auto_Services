@@ -2,6 +2,7 @@ import 'package:auto_services/screens/account/view/user_profile.dart';
 import 'package:auto_services/screens/car_repair/controller/car_repair_controller.dart';
 
 import '../../../widgets/widgets_imports.dart';
+import 'car_repair_notification.dart';
 
 class CarRepairBottomNavBar extends StatelessWidget {
   const CarRepairBottomNavBar({super.key});
@@ -13,7 +14,7 @@ class CarRepairBottomNavBar extends StatelessWidget {
         return switch (carRepairController.selectedPageIndex.value) {
           0 => const CarRepairServiceSelectionScreen(),
           1 => const CarRepairBooking(),
-          2 => const CarServicePkgSelectionScreen(),
+          2 => const CarRepairNotificationScreen(),
           3 => const UserProfile(),
           _ => const BookNow(),
         };

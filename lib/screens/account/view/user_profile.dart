@@ -24,9 +24,10 @@ class UserProfile extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: kHeight(.08),
+                        backgroundColor: KColors.kPrimary,
                         child: ClipOval(
                           child: Image.network(userData.value?.profilePic ?? '',
-                              height: 150, width: 150, fit: BoxFit.cover, errorBuilder: (_, obj, trace) => Image.asset("", height: 150, width: 150, fit: BoxFit.cover)),
+                              height: 150, width: 150, fit: BoxFit.cover, errorBuilder: (_, obj, trace) => Icon(Icons.person, color: KColors.kWhite, size: kWidth(0.1))),
                         ),
                       ),
                       heightBox(.02),

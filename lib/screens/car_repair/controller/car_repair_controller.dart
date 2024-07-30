@@ -1,4 +1,5 @@
 import 'package:auto_services/common_models/booking.dart';
+import 'package:auto_services/common_models/notification.dart';
 import 'package:auto_services/screens/car_repair/model/car_service_pkgs.dart';
 import 'package:auto_services/screens/car_repair/view/car_repair_bottomnavbar.dart';
 import 'package:auto_services/utils/loader.dart';
@@ -18,6 +19,7 @@ class CarRepairController extends GetxController {
   final carServices = RxList<CarRepairServiceModel>();
   final selectedRepairService = Rxn<CarRepairServiceModel>();
   final carRepairBookings = RxList<BookingModel>();
+  final carRepairNotifications = RxList<NotificationModel>();
 
   /// Functions
 
@@ -88,7 +90,9 @@ class CarRepairController extends GetxController {
         id: '',
         mainService: selectedService.value ?? '',
         source: '',
+        sourceLatLng: null,
         destination: '',
+        destinationLatLng: null,
         preferredDate: '',
         brand: '',
         carId: '',
@@ -107,8 +111,18 @@ class CarRepairController extends GetxController {
         },
         status: 'Pending',
       );
+      _fireStore.collection('Booking').add(bookingData.toJson());
 
-      final response = _fireStore.collection('Booking').add(bookingData.toJson());
+      final notification = NotificationModel(
+        from: userData.value?.id ?? '',
+        to: selectedMechanic.value?.id ?? '',
+        isRead: false,
+        title: 'New Car Repairing Request',
+        description: 'Hi ${selectedMechanic.value?.name}, there is a new request for car repairing for you.',
+        serviceType: selectedService.value ?? '',
+        timestamp: Timestamp.fromDate(DateTime.now()),
+      );
+      _fireStore.collection('Notifications').add(notification.toJson());
 
       KLoaders.closeFullScreenLoader();
       Get.offUntil(MaterialPageRoute(builder: (context) => const CarRepairBottomNavBar()), (Route<dynamic> route) => false);
@@ -139,10 +153,28 @@ class CarRepairController extends GetxController {
     });
   }
 
+  // Stream of Notifications
+  Stream<List<NotificationModel>> getNotifications() {
+    List<NotificationModel> records = [];
+    Stream<QuerySnapshot> snapshots = _fireStore.collection('Notifications').where('ServiceType', isEqualTo: 'Car-Repair').where('To', isEqualTo: userData.value?.id).snapshots();
+    snapshots.listen((QuerySnapshot query) {
+      if (query.docChanges.isNotEmpty) {
+        records.clear();
+      }
+    });
+    return snapshots.map((snapshot) {
+      for (var item in snapshot.docs) {
+        records.add(NotificationModel.fromSnapshot(item as DocumentSnapshot<Map<String, dynamic>>));
+      }
+      return records.toList();
+    });
+  }
+
   @override
   void onInit() {
     super.onInit();
     fetchCarRepairServices();
     carRepairBookings.bindStream(getUserBookings());
+    carRepairNotifications.bindStream(getNotifications());
   }
 }

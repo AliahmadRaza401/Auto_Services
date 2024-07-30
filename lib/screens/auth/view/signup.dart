@@ -44,7 +44,7 @@ class RegistrationScreen extends StatelessWidget {
                           prefixIcon: const Icon(null),
                           function: (val) => KValidator.validateEmptyField('Name', val),
                         ),
-                        heightBox(0.01),
+                        heightBox(0.015),
                         CustomTextField(
                           controller: controller.emailController,
                           label: "Email",
@@ -56,7 +56,7 @@ class RegistrationScreen extends StatelessWidget {
                           prefixIcon: const Icon(null),
                           function: (val) => KValidator.validateEmail(val),
                         ),
-                        heightBox(.01),
+                        heightBox(.015),
                         CustomTextField(
                           controller: controller.phoneController,
                           label: "Phone No.",
@@ -68,7 +68,7 @@ class RegistrationScreen extends StatelessWidget {
                           prefixIcon: const Icon(null),
                           function: (val) => KValidator.validateEmptyField('Phone No.', val),
                         ),
-                        heightBox(.01),
+                        heightBox(.015),
                         CustomTextField(
                           isCPassword: true,
                           isPassword: true,
@@ -82,38 +82,30 @@ class RegistrationScreen extends StatelessWidget {
                           prefixIcon: const Icon(null),
                           function: (val) => KValidator.validatePassword(val),
                         ),
-                        heightBox(0.01),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: CustomText(text: "Forget password ?", textStyle: KTextStyles().small(fontSize: 12, textColor: KColors.kTcolor)),
-                        ),
-                        heightBox(.02),
-                        Divider(
-                          thickness: 1,
-                          color: KColors.kTcolor.withOpacity(.2),
-                        ),
                         heightBox(0.02),
+                        // heightBox(0.02),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //   children: [
+                        //     IconTextButton2(
+                        //       width: .4,
+                        //       color: KColors.kWhite,
+                        //       text: "FACEBOOK",
+                        //       img: "assets/images/facebook.png",
+                        //       function: () {},
+                        //     ),
+                        //     IconTextButton2(
+                        //       width: .4,
+                        //       color: KColors.kWhite,
+                        //       text: "GOOGLE",
+                        //       img: "assets/images/G.png",
+                        //       function: () {},
+                        //     ),
+                        //   ],
+                        // ),
+                        // heightBox(.02),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            IconTextButton2(
-                              width: .4,
-                              color: KColors.kWhite,
-                              text: "FACEBOOK",
-                              img: "assets/images/facebook.png",
-                              function: () {},
-                            ),
-                            IconTextButton2(
-                              width: .4,
-                              color: KColors.kWhite,
-                              text: "GOOGLE",
-                              img: "assets/images/G.png",
-                              function: () {},
-                            ),
-                          ],
-                        ),
-                        heightBox(.02),
-                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Obx(() {
                               return Checkbox(
@@ -124,7 +116,6 @@ class RegistrationScreen extends StatelessWidget {
                               );
                             }),
                             SizedBox(
-                              width: kWidth(.65),
                               child: CustomRichText(
                                 normalFontSize: 12,
                                 focusedFontSize: 12,

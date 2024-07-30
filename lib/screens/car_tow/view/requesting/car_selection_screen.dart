@@ -9,7 +9,7 @@ class CarSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CarTowController controller = Get.put(CarTowController());
-    final TextEditingController searchController = TextEditingController();
+    // final TextEditingController searchController = TextEditingController();
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppBar(title: "", actions: []),
@@ -32,19 +32,19 @@ class CarSelectionScreen extends StatelessWidget {
                     width: kWidth(.9),
                     alignment: Alignment.topLeft,
                     child: CustomText(text: "Which Car Do You Drive ?", textStyle: KTextStyles().normal(fontSize: 22, fontWeight: FontWeight.w600, textColor: KColors.kPrimary))),
-                heightBox(0.02),
-                SizedBox(
-                  width: kWidth(.9),
-                  child: CustomTextField2(
-                    controller: searchController,
-                    label: "Search Location",
-                    hintText: "",
-                    keyboardType: TextInputType.text,
-                    suffixIcon: const Icon(null),
-                    prefixIcon: const Icon(Icons.search, color: KColors.kTfield),
-                    hasPrefix: true,
-                  ),
-                ),
+                // heightBox(0.02),
+                // SizedBox(
+                //   width: kWidth(.9),
+                //   child: CustomTextField2(
+                //     controller: searchController,
+                //     label: "Search Location",
+                //     hintText: "",
+                //     keyboardType: TextInputType.text,
+                //     suffixIcon: const Icon(null),
+                //     prefixIcon: const Icon(Icons.search, color: KColors.kTfield),
+                //     hasPrefix: true,
+                //   ),
+                // ),
                 heightBox(.01),
                 Obx(() {
                   if (controller.isLoading.value) {
