@@ -1,3 +1,4 @@
+import 'package:auto_services/widgets/notification_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,9 +24,8 @@ class CarRepairNotificationScreen extends StatelessWidget {
             return Center(child: CustomText(text: 'Currently No Notification', textStyle: KTextStyles().subHeading()));
           } else {
             return ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: kWidth(0.05)),
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => Container(),
+              padding: EdgeInsets.symmetric(horizontal: kWidth(0.05), vertical: kWidth(0.04)),
+              itemBuilder: (context, index) => NotificationCard(notification: carRepairController.carRepairNotifications[index]),
               separatorBuilder: (context, index) => heightBox(0.02),
               itemCount: carRepairController.carRepairNotifications.length,
             );

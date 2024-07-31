@@ -14,13 +14,13 @@ class CustomTextField extends StatelessWidget {
   final bool onlyNumber;
   final bool onlyNumberDash;
   final Widget suffixIcon;
-  final bool hasSuffix;
+  final VoidCallback? suffixIconFunction;
   final Color suffixIconColor;
   final double suffixIconSize;
-  final bool hasPrefix;
-  final VoidCallback? suffixIconFunction;
-  final Widget prefixIcon;
+  final bool hasSuffix;
   final Color themeColor;
+  final bool hasPrefix;
+  final Widget prefixIcon;
   final VoidCallback? prefixIconFunction;
   final String? Function(String?)? function;
 
@@ -33,8 +33,8 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.isCPassword = false,
     this.enable = true,
-    required this.suffixIcon,
     required this.prefixIcon,
+    required this.suffixIcon,
     this.suffixIconFunction,
     this.prefixIconFunction,
     this.function,
@@ -116,10 +116,7 @@ class CustomTextField extends StatelessWidget {
                     RegExp('[\\#]'),
                   ),
           ],
-          style: TextStyle(
-            color: KColors.kTertiary,
-            fontSize: kWidth(.04),
-          ),
+          style: TextStyle(color: KColors.kTertiary, fontSize: kWidth(.04)),
           validator: function,
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,

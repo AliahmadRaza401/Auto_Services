@@ -141,8 +141,7 @@ class IconTextButton extends StatelessWidget {
             children: [
               CustomText(
                 text: text,
-                textStyle: KTextStyles()
-                    .buttonStyle(fontSize: fontsize, textColor: textcolor),
+                textStyle: KTextStyles().buttonStyle(fontSize: fontsize, textColor: textcolor),
               ),
               widthBox(.02),
               Icon(
@@ -209,10 +208,7 @@ class IconTextButton2 extends StatelessWidget {
               widthBox(.03),
               CustomText(
                 text: text,
-                textStyle: KTextStyles().buttonStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    textColor: const Color(0xff61677D)),
+                textStyle: KTextStyles().buttonStyle(fontWeight: FontWeight.w500, fontSize: 16, textColor: const Color(0xff61677D)),
               ),
             ],
           ),
@@ -388,8 +384,8 @@ class OutlineIconTextButton2 extends StatelessWidget {
   final VoidCallback function;
   final double width;
   final double height;
-  final double borderRadius, fontsize;
-  final Color color, textcolor;
+  final double borderRadius, fontSize;
+  final Color color, textColor;
   final double elevation;
   final EdgeInsets padding;
 
@@ -404,8 +400,8 @@ class OutlineIconTextButton2 extends StatelessWidget {
     this.borderRadius = .054,
     this.elevation = 0,
     this.padding = EdgeInsets.zero,
-    this.textcolor = KColors.kPrimary,
-    this.fontsize = 18.0,
+    this.textColor = KColors.kPrimary,
+    this.fontSize = 18.0,
   }) : super(key: key);
 
   @override
@@ -417,29 +413,17 @@ class OutlineIconTextButton2 extends StatelessWidget {
         width: kWidth(width),
         decoration: BoxDecoration(
           color: KColors.noColor,
-          border: Border.all(
-            width: 1.0,
-            color: color,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(kWidth(borderRadius)),
-          ),
+          border: Border.all(width: 1.0, color: color),
+          borderRadius: BorderRadius.all(Radius.circular(kWidth(borderRadius))),
         ),
         padding: padding,
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                img,
-                height: kHeight(.04),
-              ),
+              Image.asset(img, height: kHeight(.04)),
               widthBox(.02),
-              CustomText(
-                text: text,
-                textStyle: KTextStyles()
-                    .buttonStyle(fontSize: fontsize, textColor: textcolor),
-              ),
+              CustomText(text: text, textStyle: KTextStyles().buttonStyle(fontSize: fontSize, textColor: textColor)),
             ],
           ),
         ),

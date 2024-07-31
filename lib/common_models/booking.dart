@@ -12,7 +12,9 @@ class BookingModel {
     required this.destinationLatLng,
     required this.preferredDate,
     required this.brand,
-    required this.carId,
+    required this.car,
+    required this.carModel,
+    required this.preferredTime,
     required this.paymentStatus,
     required this.customerId,
     required this.customerName,
@@ -33,9 +35,11 @@ class BookingModel {
   final String destination;
   final GeoPoint? destinationLatLng;
   final String preferredDate;
-  final String brand;
   final String paymentStatus;
-  final String carId;
+  final String brand;
+  final String car;
+  final String carModel;
+  final String preferredTime;
   final String customerId;
   final String customerName;
   final String customerContactNo;
@@ -49,7 +53,9 @@ class BookingModel {
   static BookingModel empty() => BookingModel(
         id: '',
         brand: '',
-        carId: '',
+        car: '',
+        carModel: '',
+        preferredTime: '',
         preferredDate: '',
         mainService: '',
         subService: '',
@@ -83,7 +89,9 @@ class BookingModel {
         destination: data['Destination'] ?? '',
         destinationLatLng: data['DestinationLatLng'],
         brand: data['Brand'] ?? '',
-        carId: data['CarId'] ?? '',
+        car: data['Car'] ?? '',
+        carModel: data['CarModel'] ?? '',
+        preferredTime: data['PreferredTime'] ?? '',
         preferredDate: data['PreferredDate'] ?? '',
         paymentStatus: data['PaymentStatus'] ?? '',
         mechanicId: data['MechanicId'] ?? '',
@@ -110,8 +118,10 @@ class BookingModel {
         'Destination': destination,
         'DestinationLatLng': destinationLatLng,
         'Brand': brand,
-        'CarId': carId,
+        'Car': car,
+        'CarModel': carModel,
         'PreferredDate': preferredDate,
+        'PreferredTime': preferredTime,
         'PaymentStatus': paymentStatus,
         'Status': status,
         'CustomerId': customerId,

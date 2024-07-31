@@ -3,11 +3,9 @@ import 'dart:math';
 
 import 'package:auto_services/common_models/booking.dart';
 import 'package:auto_services/common_models/brand.dart';
-import 'package:auto_services/data/service/firebase_message_service.dart';
 import 'package:auto_services/utils/loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_cloud_firestore/firebase_cloud_firestore.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -370,7 +368,8 @@ class CarTowController extends GetxController {
         KLoaders.showFullScreenLoader(text: 'Booking for Towing Car');
 
         final booking = BookingModel(
-          carId: '',
+          car: '',
+          carModel: '',
           brand: selectedBrand.value?.name ?? '',
           source: source.value?.description ?? '',
           sourceLatLng: GeoPoint(double.tryParse(source.value?.lat ?? '0.0') ?? 0.0, double.tryParse(source.value?.lng ?? '0.0') ?? 0.0),
@@ -378,6 +377,7 @@ class CarTowController extends GetxController {
           destinationLatLng: GeoPoint(double.tryParse(destination.value?.lat ?? '0.0') ?? 0.0, double.tryParse(destination.value?.lng ?? '0.0') ?? 0.0),
           mainService: selectedService.value ?? '',
           preferredDate: preferredDate.text.trim(),
+          preferredTime: '',
           id: '',
           status: 'Pending',
           mechanicId: '',

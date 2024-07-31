@@ -1,8 +1,8 @@
 import 'package:auto_services/screens/service_selection/controller/service_selection_controller.dart';
+import 'package:auto_services/screens/technical_test/view/technical_test_home.dart';
 import 'package:auto_services/widgets/widgets_imports.dart';
 import '../../../data/repository/authentication_repository.dart';
 import '../../car_repair/view/car_repair_bottomnavbar.dart';
-import '../../technical_test.dart';
 
 class ServiceSelectionScreen extends StatelessWidget {
   ServiceSelectionScreen({super.key});
@@ -96,7 +96,7 @@ class ServiceSelectionScreen extends StatelessWidget {
                                   } else if (controller.services[index].module == 'Car-Repair') {
                                     Get.to(() => const CarRepairBottomNavBar());
                                   } else if (controller.services[index].module == 'Tech-Test') {
-                                    Get.to(() => const TechnicalTest());
+                                    Get.to(() => const TechnicalTestHome());
                                   }
                                 });
                               }

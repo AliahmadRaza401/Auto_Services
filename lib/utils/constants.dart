@@ -24,11 +24,7 @@ const Map<String, String> headers = {
 class TechnicalTestTileDrop extends StatelessWidget {
   final String title, lable;
 
-  const TechnicalTestTileDrop({
-    super.key,
-    required this.title,
-    required this.lable,
-  });
+  const TechnicalTestTileDrop({super.key, required this.title, required this.lable});
 
   @override
   Widget build(BuildContext context) {

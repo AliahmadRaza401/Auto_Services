@@ -41,23 +41,7 @@ class CarTowBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color statusColor = Colors.transparent;
-    switch (booking?.status) {
-      case 'Pending':
-        statusColor = Colors.amber;
-        break;
-      case 'Accepted':
-        statusColor = Colors.lightBlue;
-        break;
-      case 'Rejected':
-        statusColor = Colors.red;
-        break;
-      case 'Completed':
-        statusColor = Colors.green;
-        break;
-      default:
-        statusColor = Colors.transparent;
-        break;
-    }
+    statusColor = switch (booking?.status) { 'Pending' => Colors.amber, 'Accepted' => Colors.lightBlue, 'Rejected' => Colors.red, 'Completed' => Colors.green, _ => Colors.transparent };
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
